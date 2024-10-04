@@ -21,31 +21,20 @@ class Circle {
   }
 
   move() {
-    //Save previous circle x and y
-    this.px = this.x;
-    this.py = this.y;
-    this.x += randomInt(-3, 4);
-    this.y += randomInt(-3, 4);
-
-    if (KeyAIsPressed) {
-      this.x -= 4
-    } else if (KeyWIsPressed) {
-      this.y -= 4
-    } else if (KeyDIsPressed) {
-      this.x += 4
-    } else if (KeySIsPressed) {
-      this.y += 4
-    } 
-
-    if (this.x > 800 - this.r) {
-      this.x = 800 - this.r;
-    } else if (this.x < + this.r) {
-      this.x = 0 + this.r;
-    } else if (this.y < 0 + this.r) {
-      this.y = 0 + this.r;
-    } else if (this.y > 600- this.r) {
-      this.y = 600 - this.r;
+    if (keyPressed["KeyA"]) {
+      this.x += -5;
+    } else if (keyPressed["KeyD"]) {
+      this.x += 5;
+    } else if (keyPressed["KeyS"]) {
+      this.y += 5;
+    } else if (keyPressed["KeyW"]) {
+      this.y += -5;
+    } else {
+      this.x += randomInt(-3, 4);
+      this.y += randomInt(-3, 4);
     }
+    this.x = constrain(this.x, 0 + this.r, cnv.width - this.r);
+    this.y = constrain(this.y, 0 + this.r, cnv.height - this.r);
   }
 
   towardsCenter() {
@@ -61,31 +50,35 @@ class Circle {
     this.y = this.y + this.dy;
   }
 
-  setColor() {
-    if (Digit1IsPressed) {
+  key() {
+    if (keyPressed["Digit1"]) {
       this.color = "red";
-    } else if (Digit2IsPressed) {
+    } else if (keyPressed["Digit2"]) {
       this.color = "orange";
-    } else if (Digit3IsPressed) {
+    } else if (keyPressed["Digit3"]) {
       this.color = "Gold";
-    } else if (Digit4IsPressed) {
+    } else if (keyPressed["Digit4"]) {
       this.color = "green";
-    } else if (Digit5IsPressed) {
+    } else if (keyPressed["Digit5"]) {
       this.color = "blue";
-    } else if (Digit6IsPressed) {
+    } else if (keyPressed["Digit7"]) {
+      this.color = "violet";
+    } else if (keyPressed["Digit8"]) {
+      this.color = "indigo";
+    } else if (keyPressed["Digit9"]) {
+      this.color = "pink";
+    } else if (keyPressed["Digit0"]) {
+      this.color = "black";
+    }
+
+    if (keyPressed["Digit6"]) {
       notCrazy = false;
       this.color = randomRGB();
       this.x += randomInt(-6, 7);
       this.y += randomInt(-6, 7);
       document.body.style.backgroundColor = randomRGB();
-    } else if (Digit7IsPressed) {
-      this.color = "violet";
-    } else if (Digit8IsPressed) {
-      this.color = "indigo";
-    } else if (Digit9IsPressed) {
-      this.color = "pink";
-    } else if (Digit0IsPressed) {
-      this.color = "black";
+    } else {
+      notCrazy = true;
     }
   }
 

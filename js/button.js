@@ -14,7 +14,7 @@ function addrandomCircle() {
     new Circle(
       randomInt(0, 800),
       randomInt(0, 600),
-      randomInt(0, 200),
+      randomInt(0, 150),
       randomRGB()
     )
   );
