@@ -51,8 +51,6 @@ function surprise() {
   if (possiblity > 2) {
     alert("Awww... You did not recieve anything...");
   } else {
-    alert("✨YOU WON A SURPRISE✨");
-    alert("Would you like to see what it is?");
     for (let i = 0; i < randomInt(100, 500); i++) {
       circleArray.push(
         new Circle(
