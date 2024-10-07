@@ -30,19 +30,20 @@ class Circle {
     } else if (keyPressed["KeyW"]) {
       this.y += -5;
     } else {
-      this.x += randomInt(-3, 4);
-      this.y += randomInt(-3, 4);
+      this.x += randomInt(-2, 3);
+      this.y += randomInt(-2, 3);
     }
     this.x = constrain(this.x, 0 + this.r, cnv.width - this.r);
     this.y = constrain(this.y, 0 + this.r, cnv.height - this.r);
   }
+  // function dist(x1, y1, x2, y2) {
+  //   return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
+  // }
 
-  towardsCenter() {
+  towardsMouse() {
     // Save previous circle x and y
-    this.px = this.x;
-    this.py = this.y;
-    this.rise = 300 - this.y;
-    this.run = 400 - this.x;
+    this.rise = mouseY - this.y;
+    this.run = mouseX - this.x;
     this.d = Math.sqrt(this.run ** 2 + this.rise ** 2);
     this.dx = (this.run / this.d) * 3;
     this.dy = (this.rise / this.d) * 3;
@@ -69,13 +70,17 @@ class Circle {
       this.color = "pink";
     } else if (keyPressed["Digit0"]) {
       this.color = "black";
+    } else if (keyPressed["KeyR"]) {
+      circleArray = [];
     }
 
     if (keyPressed["Digit6"]) {
       notCrazy = false;
       this.color = randomRGB();
-      this.x += randomInt(-6, 7);
-      this.y += randomInt(-6, 7);
+      if (!mouseIsPressed) {
+        this.x += randomInt(-6, 7);
+        this.y += randomInt(-6, 7);
+      }
       document.body.style.backgroundColor = randomRGB();
     } else {
       notCrazy = true;
@@ -84,7 +89,7 @@ class Circle {
 
   mousepressed() {
     if (mouseIsPressed) {
-      this.towardsCenter();
+      this.towardsMouse();
     } else {
       this.move();
     }

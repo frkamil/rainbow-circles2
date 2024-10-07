@@ -23,6 +23,7 @@ function draw() {
 
   // ***** DRAWING *****
   // Clear background
+
   if (notCrazy) {
     document.body.style.backgroundColor = "white";
     ctx.clearRect(0, 0, cnv.width, cnv.height);
