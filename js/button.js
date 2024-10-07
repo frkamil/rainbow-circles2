@@ -48,9 +48,7 @@ function deleteallCircle() {
 function surprise() {
   let possiblity = randomInt(0, 10);
   console.log(possiblity);
-  if (possiblity > 2) {
-    alert("Awww... You did not recieve anything...");
-  } else {
+  if (possiblity < 2) {
     for (let i = 0; i < randomInt(100, 500); i++) {
       circleArray.push(
         new Circle(
